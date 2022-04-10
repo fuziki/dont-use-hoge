@@ -18,5 +18,3 @@ class Example {
 }
 func hoge() {
 }
-
-
