@@ -22,10 +22,8 @@ let package = Package(
                 .product(name: "SwiftSyntax", package: "swift-syntax"),
                 .product(name: "SwiftSyntaxParser", package: "swift-syntax"),
             ],
-            swiftSettings: [
-            ],
             linkerSettings: [
-//                .unsafeFlags(["-rpath", "/${CONFIGURATION_BUILD_DIR}/"]),
+                .unsafeFlags(["-rpath", "@executable_path"]),
             ]),
         .plugin(
             name: "DontUseHogePlugin",
