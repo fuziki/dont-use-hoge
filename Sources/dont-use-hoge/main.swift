@@ -14,6 +14,9 @@ class HogeDetectorSyntaxVisitor: SyntaxVisitor {
         locations.append((line: location.line!, column: location.column!))
         return .visitChildren
     }
+    override open func visit(_ node: FunctionCallExprSyntax) -> SyntaxVisitorContinueKind {
+      return .visitChildren
+    }
 }
 
 if CommandLine.arguments.count >= 2 {
@@ -59,7 +62,7 @@ _ = MySyntaxRewriter().visit(sourceFile._syntaxNode)
 class HogeToFugaSyntaxRewriter: SyntaxRewriter {
     override func visit(_ node: IdentifierPatternSyntax) -> PatternSyntax {
         if node.identifier.text == "hoge" {
-            return super.visit(node.withIdentifier(SyntaxFactory.makeIdentifier("fuga")))
+            return super.visit(node.withIdentifier(SyntaxFactory.makeIdentifier("fuga", trailingTrivia: .spaces(1))))
         } else {
             return super.visit(node)
         }
