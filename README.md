@@ -1,3 +1,3 @@
 # dont-use-hoge
 
-A description of this package.
+dont-use-hoge is a BuildToolPlugin that displays an error when a variable named "hoge" is declared.
